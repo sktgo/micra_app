@@ -1,0 +1,28 @@
+<title>Mincraft Video Predict App</title>
+<style>
+  #Wrapper {
+    text-align: center;
+  }
+</style>
+
+<div id="Wrapper">
+  <h1>
+    マインクラフト動画のタイトルと説明文を入力して、<br />
+    再生回数を推定しよう！
+  </h1>
+  <form method="post">
+    {{ forms.scrf_token }} {{ forms.Title.label}}<br />
+    {{ forms.Title }}<br />
+    {% for error in forms.Title.errors %}
+    <div>{{ error }}</div>
+    {% endfor %}<br />
+
+    {{ forms.Description.label}}<br />
+    {{ forms.Description }}<br />
+    {% for error in forms.Description.errors %}
+    <div>{{ error }}</div>
+    {% endfor %}<br />
+
+    {{ forms.submit }}
+  </form>
+</div>
