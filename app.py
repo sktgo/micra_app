@@ -11,8 +11,8 @@ import ipadic
 from fugashi import GenericTagger
 from sklearn.ensemble import RandomForestRegressor
 
-w2v_model_path = "./src/word2vec.gensim.model"
-model_path = "./src/model0824.joblib"
+w2v_model_path = "./word2vec.gensim.model"
+model_path = "./model0824.joblib"
 
 
 # 入力されたタイトル文字列をword2vecに変換する関数
