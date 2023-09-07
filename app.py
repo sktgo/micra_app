@@ -16,6 +16,14 @@ w2v_model_path = os.path.abspath('word2vec.gensim.model')
 model_path = os.path.abspath('model0824.joblib')
 
 
+# W2Vモデルの読込
+w2v_model = word2vec.Word2Vec.load(w2v_model_path)
+
+
+# 学習済みモデル（model0824.joblib）を読み込み
+model = load(model_path)
+
+
 # 入力されたタイトル文字列をword2vecに変換する関数
 def w2v_title(title, w2v_model):
     
@@ -56,9 +64,6 @@ def w2v_description(description, w2v_model):
 
 # 学習済みモデルをもとに推論する関数
 def predict(title, description):
-    
-    # W2Vモデルの読込
-    w2v_model = word2vec.Word2Vec.load(w2v_model_path)
 
     # データフレームの作成
     # X1がtitle、X2がdescriptionをword2vecしたもの
@@ -88,9 +93,6 @@ def predict(title, description):
     # Xv = w2v_df[[f"('X1', {i})" for i in range(50)] + [f"('X2', {i})" for i in range(50)]]
     # print(Xv)
     # Xv = np.concatenate([w2v_title(title, w2v_model), w2v_description(description, w2v_model)]).reshape(1, -1)
-
-    # 学習済みモデル（model0824.joblib）を読み込み
-    model = load(model_path)
     
     # 予測値の出力
     y_pred = model.predict(w2v_df)
